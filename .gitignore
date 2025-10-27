@@ -1,0 +1,6 @@
+outmodel
+node_modules
+dist
+.config
+/.env
+db.json

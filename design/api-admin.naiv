@@ -1,0 +1,21 @@
+api post /login {
+  alias login
+  description login
+  body {
+    username string required
+    password string required
+  }
+  return {
+    token string required
+    user table.Admin required
+  } required
+}
+
+api post /admin/change-password {
+  alias changeAdminPassword
+  body {
+    old_password string required
+    new_password string required
+  }
+  return boolean required
+}

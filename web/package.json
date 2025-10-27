@@ -1,0 +1,44 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "test": "vitest run",
+    "codegen": "codegen-axios-client -d ../design -o src/api-client"
+  },
+  "dependencies": {
+    "@heroui/react": "^2.8.5",
+    "@naiv/codegen-axios-client": "^0.0.14",
+    "@tailwindcss/vite": "^4.0.6",
+    "@tanstack/react-devtools": "^0.7.0",
+    "@tanstack/react-router": "^1.132.0",
+    "@tanstack/react-router-devtools": "^1.132.0",
+    "@tanstack/router-plugin": "^1.132.0",
+    "axios": "^1.12.2",
+    "framer-motion": "^12.23.24",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.545.0",
+    "moment": "^2.30.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.0.6"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "@types/lodash": "^4.17.20",
+    "@types/moment": "^2.11.29",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "jsdom": "^27.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^7.1.7",
+    "vitest": "^3.0.5",
+    "web-vitals": "^5.1.0"
+  }
+}

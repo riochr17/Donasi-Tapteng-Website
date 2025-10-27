@@ -1,0 +1,141 @@
+table Admin {
+  id bigint pk inc notnull
+  username varchar(500) notnull
+  password varchar(500) notnull
+  created_at timestamp notnull default=NOW()
+}
+
+table Unit {
+  id bigint pk inc notnull
+  id_unit_parent Unit.id
+  name varchar(500) notnull
+  location varchar(500)
+  description text
+  created_at timestamp notnull default=NOW()
+}
+
+table Position {
+  id bigint pk inc notnull
+  name varchar(500) notnull
+  description text
+  created_at timestamp notnull default=NOW()
+}
+
+enum Gender {
+  m
+  f
+}
+
+enum MaritalStatus {
+  single
+  married
+  divorced
+  widowed
+}
+
+table Employee {
+  id bigint pk inc notnull
+  id_supervisor Employee.id
+  id_unit Unit.id
+  id_position Position.id
+  sub_unit varchar(500) notnull
+  employee_number varchar(500) notnull
+  fullname varchar(500) notnull
+  gender enum.Gender notnull
+  birth_place varchar(500)
+  birth_date date
+  marital_status enum.MaritalStatus
+  phone varchar(50)
+  email varchar(500) notnull
+  address text
+  hire_date date
+  resign_date date
+  password varchar(500)
+  created_at timestamp notnull default=NOW()
+}
+
+table Education {
+  id bigint pk inc notnull
+  id_employee Employee.id notnull
+  school_name varchar(500) notnull
+  field varchar(500)
+  year int
+  created_at timestamp notnull default=NOW()
+}
+
+table Training {
+  id bigint pk inc notnull
+  id_employee Employee.id notnull
+  training_name varchar(500) notnull
+  provider varchar(500)
+  start_date date
+  end_date date
+  created_at timestamp notnull default=NOW()
+}
+
+table Certificate {
+  id bigint pk inc notnull
+  id_employee Employee.id notnull
+  certification_name varchar(500) notnull
+  issuer varchar(500)
+  issue_date date
+  expiry_date date
+  created_at timestamp notnull default=NOW()
+}
+
+enum AttendanceMethod {
+  manual
+  gps
+  fingerprint
+  face_recognition
+}
+
+table Attendance {
+  id bigint pk inc notnull
+  id_employee Employee.id notnull
+  date date
+  clock_in timestamp notnull
+  clock_out timestamp
+  method enum.AttendanceMethod notnull default=manual
+  gps_lat decimal(10,8)
+  gps_long decimal(10,8)
+  location varchar(500)
+  created_at timestamp notnull default=NOW()
+}
+
+table Overtime {
+  id bigint pk inc notnull
+  id_employee Employee.id notnull
+  date date
+  start_time timestamp
+  end_time timestamp
+  hours decimal(5,2)
+  purpose text
+  created_at timestamp notnull default=NOW()
+}
+
+enum LeaveRequestStatus {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+table LeaveRequest {
+  id bigint pk inc notnull
+  id_employee Employee.id notnull
+  type varchar(500) notnull
+  reason text
+  start_date date
+  end_date date
+  latest_status enum.LeaveRequestStatus notnull default=pending
+  created_at timestamp notnull default=NOW()
+}
+
+table LeaveRequestHistory {
+  id bigint pk inc notnull
+  id_leave_request LeaveRequest.id notnull
+  status enum.LeaveRequestStatus notnull default=pending
+  notes text
+  created_at timestamp notnull default=NOW()
+}
