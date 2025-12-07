@@ -27,8 +27,8 @@ export function BuktiDonasiForm(props: BuktiDonasiFormProps) {
   }, [anonim])
 
   return (
-    <Modal isOpen={props.open} onClose={() => props.setOpen?.(false)}>
-      <ModalContent className="h-[80dvh]">
+    <Modal scrollBehavior="inside" isOpen={props.open} onClose={() => props.setOpen?.(false)}>
+      <ModalContent>
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
