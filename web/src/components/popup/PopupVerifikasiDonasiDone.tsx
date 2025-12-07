@@ -1,3 +1,4 @@
+import { ContactPerson } from "@/utility";
 import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea } from "@heroui/react";
 
 interface PopupVerifikasiDonasiDoneProps {
@@ -22,7 +23,7 @@ export function PopupVerifikasiDonasiDone(props: PopupVerifikasiDonasiDoneProps)
                 <div className="text-zinc-500 italic">
                   Donasi yang diberikan akan kami verifikasi dalam maksimal 1x24jam. Kami akan mengirimkan email konfirmasi ke <b>{'youremail@gmail.com'}</b> ketika donasi berhasil terverifikasi.
                   <br/><br/>
-                  Jika masih belum ada konfirmasi silahkan hubungi ke nomor WhatsApp berikut: <b>081222222222</b>
+                  Jika masih belum ada konfirmasi silahkan hubungi ke nomor WhatsApp berikut: <b>{ ContactPerson.phone }</b>
                 </div>
               </div>
             </ModalBody>

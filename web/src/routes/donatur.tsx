@@ -32,7 +32,7 @@ export const Route = createFileRoute('/donatur')({
     }, []);
 
     return (
-      <Layout className='flex flex-col gap-8'>
+      <Layout className='flex flex-col gap-8 flex-1'>
         <div className='flex flex-col gap-2 my-4'>
           <div className='text-2xl'>
             Total Donasi Terkumpul
