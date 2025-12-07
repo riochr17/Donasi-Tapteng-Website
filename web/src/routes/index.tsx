@@ -35,7 +35,7 @@ export const Route = createFileRoute('/')({
           <GoogleLoginButton onSuccess={() => window.location.href = '/main'} />
         </div> }
         <div className='flex lg:flex-row justify-between items-center flex-col gap-0 pb-4'>
-          <div className='flex flex-col gap-2 my-4'>
+          <div className='text-center flex flex-col gap-2 my-4'>
             <div className='text-2xl'>
               Total Donasi Terkumpul
             </div>
