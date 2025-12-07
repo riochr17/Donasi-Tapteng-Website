@@ -73,13 +73,13 @@ export const Route = createFileRoute('/')({
         <div className='text-zinc-600'>
           Ribuan orang di Sumatra telah kehilangan rumah akibat banjir besar dan tanah longsor yang menghancurkan - banyak yang berduka atas anggota keluarga atau masih mencari mereka yang hilang. Jalan dan jembatan tidak dapat dilalui, listrik dan jaringan seluler terputus. Situasi pasokan semakin kritis dari hari ke hari, dan persediaan makanan semakin menipis.
         </div>
-        <div className='flex items-center gap-2 h-90 w-full'>
-          <div className='flex-1 h-full'>
+        <div className='flex flex-col lg:flex-row items-center gap-2 h-full lg:h-90 w-full'>
+          <div className='w-full lg:w-auto lg:flex-1 lg:h-full'>
             <img 
               className='w-full h-full object-cover'
               src={'/IMG-20251207-WA0013.webp'} />
           </div>
-          <div className='flex-1 h-full'>
+          <div className='w-full lg:w-auto lg:flex-1 lg:h-full'>
             <img 
               className='w-full h-full object-cover'
               src={'/IMG-20251207-WA0014.webp'} />
