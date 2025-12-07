@@ -1,5 +1,7 @@
 import { HTMLAttributes } from "react";
 import { Header } from "./Header";
+import { Link } from "@heroui/react";
+import { ContactPerson } from "@/utility";
 
 interface LayoutProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -17,6 +19,9 @@ export function Layout(props: LayoutProps) {
         ${props.className || ''}
       `}>
         { props.children }
+      </div>
+      <div className="p-4 bg-zinc-50 text-center">
+        Contact Person WhatsApp <Link href={`https://wa.me/${ContactPerson.wa}`}>{ ContactPerson.phone }</Link>
       </div>
     </div>
   );

@@ -1,0 +1,10 @@
+api post /login-with-google {
+  alias loginWithGoogle
+  body {
+    google_access_token string required
+  }
+  return {
+    token string required
+    user table.Donatur required
+  } required
+}

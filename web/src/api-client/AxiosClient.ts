@@ -5,6 +5,13 @@ import { T_createOrUpdateSetting } from "./api/createOrUpdateSetting";
 import { T_deleteSetting } from "./api/deleteSetting";
 import { T_login } from "./api/login";
 import { T_changeAdminPassword } from "./api/changeAdminPassword";
+import { T_getAllValidDonasi } from "./api/getAllValidDonasi";
+import { T_getTotalAllValidDonasi } from "./api/getTotalAllValidDonasi";
+import { T_getMyDonasi } from "./api/getMyDonasi";
+import { T_getMyDonasiByID } from "./api/getMyDonasiByID";
+import { T_buatDonasi } from "./api/buatDonasi";
+import { T_uploadBuktiDonasi } from "./api/uploadBuktiDonasi";
+import { T_loginWithGoogle } from "./api/loginWithGoogle";
 
 export namespace AxiosClient {
 
@@ -55,6 +62,34 @@ export namespace AxiosClient {
   }
   export const changeAdminPassword: T_changeAdminPassword = async (req, base_url: string = BaseURL.instance.base_url) => {
     const final_url = __build_path(base_url, '/admin/change-password', {});
+    return (await axios['post'](final_url, req.body, { })).data as any;
+  }
+  export const getAllValidDonasi: T_getAllValidDonasi = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/donasi', {});
+    return (await axios['get'](final_url, { })).data as any;
+  }
+  export const getTotalAllValidDonasi: T_getTotalAllValidDonasi = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/total-donasi', {});
+    return (await axios['get'](final_url, { })).data as any;
+  }
+  export const getMyDonasi: T_getMyDonasi = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/my-donasi', {});
+    return (await axios['get'](final_url, { headers: req.headers as any, })).data as any;
+  }
+  export const getMyDonasiByID: T_getMyDonasiByID = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/my-donasi/:id', req.path);
+    return (await axios['get'](final_url, { headers: req.headers as any, })).data as any;
+  }
+  export const buatDonasi: T_buatDonasi = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/my-donasi', {});
+    return (await axios['post'](final_url, req.body, { headers: req.headers as any, })).data as any;
+  }
+  export const uploadBuktiDonasi: T_uploadBuktiDonasi = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/my-donasi/:id/upload-bukti', req.path);
+    return (await axios['post'](final_url, req.body, { headers: req.headers as any, })).data as any;
+  }
+  export const loginWithGoogle: T_loginWithGoogle = async (req, base_url: string = BaseURL.instance.base_url) => {
+    const final_url = __build_path(base_url, '/login-with-google', {});
     return (await axios['post'](final_url, req.body, { })).data as any;
   }
 }

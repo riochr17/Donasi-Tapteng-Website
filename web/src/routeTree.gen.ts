@@ -9,13 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LaporanRouteImport } from './routes/laporan'
+import { Route as DonaturRouteImport } from './routes/donatur'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZzzIndexRouteImport } from './routes/zzz/index'
 import { Route as MainIndexRouteImport } from './routes/main/index'
-import { Route as MainSettingRouteImport } from './routes/main/setting'
+import { Route as ZzzMainIndexRouteImport } from './routes/zzz/main/index'
+import { Route as ZzzMainSettingRouteImport } from './routes/zzz/main/setting'
 
+const LaporanRoute = LaporanRouteImport.update({
+  id: '/laporan',
+  path: '/laporan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonaturRoute = DonaturRouteImport.update({
+  id: '/donatur',
+  path: '/donatur',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZzzIndexRoute = ZzzIndexRouteImport.update({
+  id: '/zzz/',
+  path: '/zzz/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MainIndexRoute = MainIndexRouteImport.update({
@@ -23,49 +42,113 @@ const MainIndexRoute = MainIndexRouteImport.update({
   path: '/main/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MainSettingRoute = MainSettingRouteImport.update({
-  id: '/main/setting',
-  path: '/main/setting',
+const ZzzMainIndexRoute = ZzzMainIndexRouteImport.update({
+  id: '/zzz/main/',
+  path: '/zzz/main/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZzzMainSettingRoute = ZzzMainSettingRouteImport.update({
+  id: '/zzz/main/setting',
+  path: '/zzz/main/setting',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/main/setting': typeof MainSettingRoute
+  '/donatur': typeof DonaturRoute
+  '/laporan': typeof LaporanRoute
   '/main': typeof MainIndexRoute
+  '/zzz': typeof ZzzIndexRoute
+  '/zzz/main/setting': typeof ZzzMainSettingRoute
+  '/zzz/main': typeof ZzzMainIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/main/setting': typeof MainSettingRoute
+  '/donatur': typeof DonaturRoute
+  '/laporan': typeof LaporanRoute
   '/main': typeof MainIndexRoute
+  '/zzz': typeof ZzzIndexRoute
+  '/zzz/main/setting': typeof ZzzMainSettingRoute
+  '/zzz/main': typeof ZzzMainIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/main/setting': typeof MainSettingRoute
+  '/donatur': typeof DonaturRoute
+  '/laporan': typeof LaporanRoute
   '/main/': typeof MainIndexRoute
+  '/zzz/': typeof ZzzIndexRoute
+  '/zzz/main/setting': typeof ZzzMainSettingRoute
+  '/zzz/main/': typeof ZzzMainIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/main/setting' | '/main'
+  fullPaths:
+    | '/'
+    | '/donatur'
+    | '/laporan'
+    | '/main'
+    | '/zzz'
+    | '/zzz/main/setting'
+    | '/zzz/main'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/main/setting' | '/main'
-  id: '__root__' | '/' | '/main/setting' | '/main/'
+  to:
+    | '/'
+    | '/donatur'
+    | '/laporan'
+    | '/main'
+    | '/zzz'
+    | '/zzz/main/setting'
+    | '/zzz/main'
+  id:
+    | '__root__'
+    | '/'
+    | '/donatur'
+    | '/laporan'
+    | '/main/'
+    | '/zzz/'
+    | '/zzz/main/setting'
+    | '/zzz/main/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  MainSettingRoute: typeof MainSettingRoute
+  DonaturRoute: typeof DonaturRoute
+  LaporanRoute: typeof LaporanRoute
   MainIndexRoute: typeof MainIndexRoute
+  ZzzIndexRoute: typeof ZzzIndexRoute
+  ZzzMainSettingRoute: typeof ZzzMainSettingRoute
+  ZzzMainIndexRoute: typeof ZzzMainIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/laporan': {
+      id: '/laporan'
+      path: '/laporan'
+      fullPath: '/laporan'
+      preLoaderRoute: typeof LaporanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donatur': {
+      id: '/donatur'
+      path: '/donatur'
+      fullPath: '/donatur'
+      preLoaderRoute: typeof DonaturRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zzz/': {
+      id: '/zzz/'
+      path: '/zzz'
+      fullPath: '/zzz'
+      preLoaderRoute: typeof ZzzIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/main/': {
@@ -75,11 +158,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/main/setting': {
-      id: '/main/setting'
-      path: '/main/setting'
-      fullPath: '/main/setting'
-      preLoaderRoute: typeof MainSettingRouteImport
+    '/zzz/main/': {
+      id: '/zzz/main/'
+      path: '/zzz/main'
+      fullPath: '/zzz/main'
+      preLoaderRoute: typeof ZzzMainIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zzz/main/setting': {
+      id: '/zzz/main/setting'
+      path: '/zzz/main/setting'
+      fullPath: '/zzz/main/setting'
+      preLoaderRoute: typeof ZzzMainSettingRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -87,8 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  MainSettingRoute: MainSettingRoute,
+  DonaturRoute: DonaturRoute,
+  LaporanRoute: LaporanRoute,
   MainIndexRoute: MainIndexRoute,
+  ZzzIndexRoute: ZzzIndexRoute,
+  ZzzMainSettingRoute: ZzzMainSettingRoute,
+  ZzzMainIndexRoute: ZzzMainIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

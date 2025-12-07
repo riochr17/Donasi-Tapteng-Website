@@ -6,8 +6,12 @@ import path from 'path';
 import Express from 'express'
 import { cwd } from 'process';
 import { PersistentDB } from './persistent-db';
+import { getRouterUpload } from './upload';
+import cors from 'cors';
 
 const server = new Server();
+// server.express?.use(cors())
+server.express?.use(getRouterUpload());
 server.express?.use('/', Express.static(path.join(cwd(), './web/dist')));
 server.express?.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(cwd(), './web/dist/index.html'));

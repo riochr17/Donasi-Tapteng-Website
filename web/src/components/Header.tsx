@@ -5,6 +5,7 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { UserSession } from "@/user-session";
 import { AxiosClient } from "@/api-client/AxiosClient";
 import { useSystemConfig } from "@/hooks/useSystemConfig";
+import { GoogleLoginButton } from "./GoogleLoginButton";
 
 interface HeaderProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -35,49 +36,52 @@ export function Header(props: HeaderProps) {
           </div>
         </a>
       </div>
-      <div className="relative flex items-center gap-2">
-        <div
-          className={`
-            hidden
-            lg:block
-          `}>
-          <div 
-            ref={menu_desktop_ref}
-            onClick={() => setOpenHeaderDesktop(!open_header_desktop)}
+      { !user.id && <GoogleLoginButton onSuccess={() => window.location.href = '/main'} /> }
+      { user.id && <>
+        <div className="relative flex items-center gap-2">
+          <div
             className={`
               hidden
-              md:flex md:items-center md:gap-3 md:rounded-full md:bg-[#0001] md:hover:bg-[#0002] md:p-[5px] md:cursor-pointer
+              lg:block
             `}>
-            <div className="px-3 font-medium">
-              { user.nama || 'Andi' }
+            <div 
+              ref={menu_desktop_ref}
+              onClick={() => setOpenHeaderDesktop(!open_header_desktop)}
+              className={`
+                hidden
+                md:flex md:items-center md:gap-3 md:rounded-full md:bg-[#0001] md:hover:bg-[#0002] md:p-[5px] md:cursor-pointer
+              `}>
+              <div className="px-3 font-medium">
+                { user.nama || 'Andi' }
+              </div>
             </div>
           </div>
+          <div 
+            onClick={() => setOpenHeaderMobile(true)}
+            className={`lg:hidden w-8 h-8 cursor-pointer`}>
+            <BurgerIcon />
+          </div>
+          { open_header_desktop && <div 
+            onMouseUp={e => e.stopPropagation()}
+            className="hidden lg:block absolute top-full right-0 w-60 bg-white rounded-2xl mt-2 shadow-[0px_1px_20px_1px_rgba(0,0,0,.07)]">
+            <HeaderDesktopMenu
+              onLogout={logout} />
+          </div> }
         </div>
         <div 
-          onClick={() => setOpenHeaderMobile(true)}
-          className={`lg:hidden w-8 h-8 cursor-pointer`}>
-          <BurgerIcon />
+          onClick={() => setOpenHeaderMobile(false)}
+          className={`
+            fixed left-0 top-0 w-screen overflow-hidden h-screen flex justify-end bg-[#0002] ${open_header_mobile ? 'z-[999]' : 'pointer-events-none opacity-0 z-[-1]'}
+            lg:hidden
+          `}>
+          <div 
+            onClick={e => e.stopPropagation()}
+            className={`z-[999] w-[80%] h-full bg-zinc-100 transition transition-transform overflow-y-auto ${open_header_mobile ? 'translate-x-0' : 'translate-x-[100%]'}`}>
+            <HeaderMobileMenu
+              onLogout={logout} />
+          </div>
         </div>
-        { open_header_desktop && <div 
-          onMouseUp={e => e.stopPropagation()}
-          className="hidden lg:block absolute top-full right-0 w-60 bg-white rounded-2xl mt-2 shadow-[0px_1px_20px_1px_rgba(0,0,0,.07)]">
-          <HeaderDesktopMenu
-            onLogout={logout} />
-        </div> }
-      </div>
-      <div 
-        onClick={() => setOpenHeaderMobile(false)}
-        className={`
-          fixed left-0 top-0 w-screen overflow-hidden h-screen flex justify-end bg-[#0002] ${open_header_mobile ? 'z-[999]' : 'pointer-events-none opacity-0 z-[-1]'}
-          lg:hidden
-        `}>
-        <div 
-          onClick={e => e.stopPropagation()}
-          className={`z-[999] w-[80%] h-full bg-zinc-100 transition transition-transform overflow-y-auto ${open_header_mobile ? 'translate-x-0' : 'translate-x-[100%]'}`}>
-          <HeaderMobileMenu
-            onLogout={logout} />
-        </div>
-      </div>
+      </> }
     </div>
   );
 }

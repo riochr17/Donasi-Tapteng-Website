@@ -3,3 +3,14 @@ export const IDRFormatter = new Intl.NumberFormat('id-ID', {
   currency: 'IDR',
   maximumFractionDigits: 0
 });
+
+export const DetailDonasi = {
+  bank: 'BCA',
+  nomor: '5415512152',
+  nama: 'Nova Margaretha Sihotang'
+};
+
+export const ContactPerson = {
+  phone: '0822-7307-1857',
+  wa: '6282273071857'
+};

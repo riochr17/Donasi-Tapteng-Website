@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { IsNull } from "typeorm";
 import { Admin } from "./types/model/table/Admin";
+import { Donatur } from "./types/model/table/Donatur";
 
 export function signJWT(Admin_id: number) {
   return jwt.sign(String(Admin_id), process.env.JWT_SECRET_KEY ?? "sample-jwt");
@@ -35,6 +36,30 @@ export async function getAdminFromAuthHeader(
   }
 
   const pengguna: Admin | null = await Admin.findOne({
+    where: {
+      id: parseInt(id)
+    }
+  });
+  if (!pengguna) {
+    throw new Error(`data tidak ditemukan.`);
+  }
+  return pengguna;
+}
+
+export async function getDonaturFromAuthHeader(
+  authorization: string
+): Promise<Donatur> {
+  const [_, token] = authorization.split(" ");
+  if (!token) {
+    throw new Error(`Data tidak ditemukan`);
+  }
+
+  const id = await extractJWT(token);
+  if (!id && isNaN(parseInt(id))) {
+    throw new Error(`Data tidak ditemukan.`);
+  }
+
+  const pengguna: Donatur | null = await Donatur.findOne({
     where: {
       id: parseInt(id)
     }

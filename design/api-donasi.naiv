@@ -1,0 +1,73 @@
+schema PublicDonasi {
+  anonim boolean required
+  nama string required
+  email string required
+  nominal number required
+  pesan string
+  tanggal string required
+}
+
+api get /donasi {
+  alias getAllValidDonasi
+  return array schema.PublicDonasi required
+}
+
+api get /total-donasi {
+  alias getTotalAllValidDonasi
+  return number required
+}
+
+api get /my-donasi {
+  alias getMyDonasi
+  headers {
+    authorization string required
+  }
+  return array table.Donasi required
+}
+
+api get /my-donasi/:id {
+  alias getMyDonasiByID
+  headers {
+    authorization string required
+  }
+  path {
+    id number required
+  }
+  return table.Donasi required
+}
+
+schema FormDataDonasi {
+  nominal number required
+}
+
+api post /my-donasi {
+  alias buatDonasi
+  headers {
+    authorization string required
+  }
+  body {
+    data schema.FormDataDonasi required
+  }
+  return table.Donasi required
+}
+
+schema FormDataBuktiDonasi {
+  nama_pengirim string
+  bank string required
+  url_gambar_bukti string required
+  pesan_donasi string
+}
+
+api post /my-donasi/:id/upload-bukti {
+  alias uploadBuktiDonasi
+  headers {
+    authorization string required
+  }
+  path {
+    id number required
+  }
+  body {
+    data schema.FormDataBuktiDonasi required
+  }
+  return table.Donasi required
+}

@@ -6,6 +6,7 @@ import './styles.css'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 import {HeroUIProvider, ToastProvider} from "@heroui/react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import reportWebVitals from './reportWebVitals.ts'
 import { AxiosClient } from './api-client/AxiosClient.ts'
@@ -36,7 +37,9 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <HeroUIProvider>
       <ToastProvider />
-      <RouterProvider router={router} />
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_WEB_CLIENT_ID ?? ""}>
+        <RouterProvider router={router} />
+      </GoogleOAuthProvider>
     </HeroUIProvider>
   )
 }

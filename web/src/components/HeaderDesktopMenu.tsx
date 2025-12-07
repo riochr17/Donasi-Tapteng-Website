@@ -10,17 +10,22 @@ export function HeaderDesktopMenu(props: HeaderDesktopMenuProps) {
   return (
     <div className="flex flex-col items-center gap-2 py-5 px-6">
       <div className="text-center text-xl font-semibold">
-        { user.username || '' }
+        { user.nama || '' }
       </div>
       <a
         href="/main"
         className="text-sky-500">
-        Dashboard
+        Donasi
       </a>
       <a
-        href="/main/setting"
+        href="/donatur"
         className="text-sky-500">
-        Setting
+        List Donatur
+      </a>
+      <a
+        href="/laporan"
+        className="text-sky-500 text-center">
+        Laporan Penggunaan Donasi
       </a>
       <a
         onClick={props.onLogout}

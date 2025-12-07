@@ -12,22 +12,27 @@ export function HeaderMobileMenu(props: HeaderMobileMenuProps) {
   return (
     <div className="flex flex-col items-end gap-4 py-5 px-7">
       <a href="/" className="flex items-center gap-3">
-        <div className="text-2xl font-semibold">
+        <div className="text-2xl font-semibold text-right">
           { system_name }
         </div>
       </a>
       <div className="pl-3 font-semibold">
-        { user.username }
+        { user.nama }
       </div>
       <a
         href="/main"
         className="text-sky-500">
-        Dashboard
+        Donasi
       </a>
       <a
-        href="/main/setting"
+        href="/donatur"
         className="text-sky-500">
-        Setting
+        List Donatur
+      </a>
+      <a
+        href="/laporan"
+        className="text-sky-500 text-right">
+        Laporan Penggunaan Donasi
       </a>
       <a
         onClick={props.onLogout}
