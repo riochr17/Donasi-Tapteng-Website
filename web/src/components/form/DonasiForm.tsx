@@ -15,7 +15,7 @@ interface DonasiFormProps {
 export function DonasiForm(props: DonasiFormProps) {
   return (
     <Modal isOpen={props.open} onClose={() => props.setOpen?.(false)}>
-      <ModalContent>
+      <ModalContent className="h-[80dvh]">
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">

@@ -9,7 +9,7 @@ interface PopupVerifikasiDonasiDoneProps {
 export function PopupVerifikasiDonasiDone(props: PopupVerifikasiDonasiDoneProps) {
   return (
     <Modal isOpen={props.open} onClose={() => props.setOpen?.(false)}>
-      <ModalContent>
+      <ModalContent className="h-[80dvh]">
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
