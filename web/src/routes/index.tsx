@@ -60,7 +60,7 @@ export const Route = createFileRoute('/')({
             color='warning'
             className='whitespace-pre-wrap text-center !h-12 text-lg'
             as={Link}>
-            Lihat List Donatur
+            Lihat Donasi Terkumpul
           </Button>
           <Button 
             href='/laporan'
@@ -115,7 +115,7 @@ export const Route = createFileRoute('/')({
             color='warning'
             className='whitespace-pre-wrap text-center !h-12 text-lg'
             as={Link}>
-            Lihat List Donatur
+            Lihat Donasi Terkumpul
           </Button>
           <Button 
             href='/laporan'
