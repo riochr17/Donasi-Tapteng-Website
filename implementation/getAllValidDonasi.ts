@@ -19,10 +19,10 @@ export const getAllValidDonasi: T_getAllValidDonasi = async req => {
 
   return list_donasi.map(d => ({
     nama: d.nama_donatur,
-    email: maskEmail(d.otm_id_donatur?.email ?? ''),
+    email: d.nama_donatur ? maskEmail(d.otm_id_donatur?.email ?? '') : '',
     nominal: d.nominal,
     pesan: d.notes ?? '',
-    anonim: false,
+    anonim: Boolean(d.nama_donatur),
     tanggal: moment(d.verified_at).format('YYYY-MM-DD')
   }));
 }
