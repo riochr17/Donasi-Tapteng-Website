@@ -51,7 +51,8 @@ export class Donasi extends BaseEntity {
   mata_uang!: string;
   @Column({
     type: 'bigint',
-    nullable: true,
+    nullable: false,
+    default: 0,
   })
   nilai_konversi_idr!: number;
   @Column({

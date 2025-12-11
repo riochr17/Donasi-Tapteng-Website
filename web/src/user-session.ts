@@ -55,6 +55,7 @@ export namespace UserSession {
         nama: '' as any,
         alamat: '' as any,
         google_user_id: '' as any,
+        kewarganegaraan: '',
       };
     }
 
