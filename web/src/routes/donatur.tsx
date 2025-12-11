@@ -55,6 +55,10 @@ export const Route = createFileRoute('/donatur')({
             { IDRFormatter.format(total) }
           </div>
         </div>
+        <div>
+          Donasi dengan mata uang Euro (€) dikumpulkan melalui link donasi di bawah:<br/>
+          <a target='_blank' className='text-blue-500 hover:underline' href={'https://spendenaktion.de/fundraiser/sibolga-und-tapanuli-tengah-sumatra-indonesia-braucht-uns-soforthilfe/-58764'}>https://spendenaktion.de/fundraiser/sibolga-und-tapanuli-tengah-sumatra-indonesia-braucht-uns-soforthilfe/-58764?popup=allDonations</a>
+        </div>
         {
           Object.keys(group_donasi).map(date_yyyymmdd => (
             <div 
