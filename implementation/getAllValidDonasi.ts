@@ -22,7 +22,7 @@ export const getAllValidDonasi: T_getAllValidDonasi = async req => {
     email: d.nama_donatur ? maskEmail(d.otm_id_donatur?.email ?? '') : '',
     nominal: d.nominal,
     pesan: d.notes ?? '',
-    anonim: Boolean(d.nama_donatur),
+    anonim: !Boolean(d.nama_donatur),
     tanggal: moment(d.verified_at).format('YYYY-MM-DD')
   }));
 }
