@@ -43,6 +43,18 @@ export class Donasi extends BaseEntity {
   })
   receipt_url?: string;
   @Column({
+    type: 'varchar',
+    nullable: false,
+    length: 3,
+    default: 'IDR',
+  })
+  mata_uang!: string;
+  @Column({
+    type: 'bigint',
+    nullable: true,
+  })
+  nilai_konversi_idr!: number;
+  @Column({
     type: 'text',
     nullable: true,
   })

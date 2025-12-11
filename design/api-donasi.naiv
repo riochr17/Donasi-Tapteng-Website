@@ -2,9 +2,12 @@ schema PublicDonasi {
   anonim boolean required
   nama string required
   email string required
+  mata_uang string required
   nominal number required
+  nominal_rupiah number required
   pesan string
   tanggal string required
+  kewarganegaraan string required
 }
 
 api get /donasi {

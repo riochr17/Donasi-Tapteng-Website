@@ -8,6 +8,8 @@ export interface Donasi {
   nama_bank: string;
   nomor_rekening: string;
   receipt_url?: string;
+  mata_uang: string;
+  nilai_konversi_idr?: number;
   notes?: string;
   nominal: number;
   created_at: Date;

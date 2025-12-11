@@ -18,9 +18,12 @@ export const getAllValidDonasi: T_getAllValidDonasi = async req => {
   });
 
   return list_donasi.map(d => ({
+    kewarganegaraan: d.otm_id_donatur?.kewarganegaraan ?? '',
+    mata_uang: d.mata_uang,
     nama: d.nama_donatur,
     email: d.nama_donatur ? maskEmail(d.otm_id_donatur?.email ?? '') : '',
     nominal: d.nominal,
+    nominal_rupiah: d.nilai_konversi_idr ?? d.nominal,
     pesan: d.notes ?? '',
     anonim: !Boolean(d.nama_donatur),
     tanggal: moment(d.verified_at).format('YYYY-MM-DD')

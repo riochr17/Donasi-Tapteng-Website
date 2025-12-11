@@ -9,6 +9,7 @@ table Donatur {
   id bigint pk inc notnull
   nama varchar(1024) notnull
   alamat text
+  kewarganegaraan varchar(100) notnull default='Indonesia'
   google_user_id varchar(200)
   email varchar(500) notnull
 }
@@ -35,6 +36,8 @@ table Donasi {
   nama_bank varchar(1024) notnull
   nomor_rekening varchar(1024) notnull
   receipt_url varchar(1024)
+  mata_uang varchar(3) notnull default='IDR'
+  nilai_konversi_idr bigint notnull default=0
   notes text
   nominal bigint notnull
   created_at timestamp notnull default=NOW()

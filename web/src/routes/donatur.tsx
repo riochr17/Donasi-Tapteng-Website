@@ -6,14 +6,14 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
-import { IDRFormatter } from '@/utility';
+import { EURFormatter, IDRFormatter } from '@/utility';
 import { PublicDonasi } from '@/api-client/schema/PublicDonasi';
 
 export const Route = createFileRoute('/donatur')({
   component() {
     const [loading, setLoading] = useState<boolean>(false);
     const [list_donasi, setListDonasi] = useState<PublicDonasi[]>([]);
-    const total = list_donasi.reduce((acc, cur) => acc + +cur.nominal, 0);
+    const total = list_donasi.reduce((acc, cur) => acc + +cur.nominal_rupiah, 0);
     const group_donasi: _.Dictionary<[string, PublicDonasi][]> = _.groupBy(list_donasi.map(d => [d.tanggal, d]), x => x[0]);
 
     async function init() {
@@ -24,6 +24,20 @@ export const Route = createFileRoute('/donatur')({
         addToast({ title: "Error", description: err?.response?.data?.toString() });
       } finally {
         setLoading(false);
+      }
+    }
+
+    function getFlag(d: PublicDonasi) {
+      switch (d.kewarganegaraan) {
+        case 'Indonesia': return '🇮🇩';
+        case 'Jerman': return '🇩🇪';
+      }
+    }
+
+    function getNominal(d: PublicDonasi) {
+      switch (d.kewarganegaraan) {
+        case 'Indonesia': return IDRFormatter.format(d.nominal_rupiah);
+        case 'Jerman': return EURFormatter.format(d.nominal);
       }
     }
 
@@ -58,13 +72,13 @@ export const Route = createFileRoute('/donatur')({
                         key={`${date_yyyymmdd}-${i}`}
                         className='flex flex-col gap-1 p-2 px-4 bg-zinc-50'>
                         { donasi.nama && <div className='text-teal-600 font-bold'>
-                          { donasi.nama } <span className='text-zinc-500'>({ donasi.email })</span>
+                          { donasi.nama } <span className='text-zinc-500'>({ donasi.email })</span> { getFlag(donasi) }
                         </div> }
                         { !donasi.nama && <div className='text-amber-600 font-bold'>
-                          Anonim
+                          Anonim { getFlag(donasi) }
                         </div> }
                         <div className='text-zinc-600 font-extrabold'>
-                          { IDRFormatter.format(donasi.nominal) }
+                          { getNominal(donasi) } { donasi.mata_uang !== 'IDR' && <span className='font-normal'>(≈{IDRFormatter.format(donasi.nominal_rupiah)})</span> }
                         </div>
                         { donasi.pesan && <div className='flex gap-2'>
                           <div className='text-2xl text-zinc-500 font-serif'>"</div>

@@ -21,6 +21,13 @@ export class Donatur extends BaseEntity {
   alamat?: string;
   @Column({
     type: 'varchar',
+    nullable: false,
+    length: 100,
+    default: 'Indonesia',
+  })
+  kewarganegaraan!: string;
+  @Column({
+    type: 'varchar',
     nullable: true,
     length: 200,
   })

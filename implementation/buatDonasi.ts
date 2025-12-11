@@ -12,5 +12,6 @@ export const buatDonasi: T_buatDonasi = async req => {
   donasi.receipt_url = '';
   donasi.notes = '';
   donasi.nominal = req.body.data.nominal;
+  donasi.nilai_konversi_idr = req.body.data.nominal;
   return await donasi.save();
 }

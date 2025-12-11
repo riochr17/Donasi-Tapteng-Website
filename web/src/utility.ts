@@ -4,6 +4,12 @@ export const IDRFormatter = new Intl.NumberFormat('id-ID', {
   maximumFractionDigits: 0
 });
 
+export const EURFormatter = new Intl.NumberFormat('eu-EU', {
+  style: 'currency',
+  currency: 'EUR',
+  maximumFractionDigits: 0
+});
+
 export const DetailDonasi = {
   bank: 'BCA',
   nomor: '5415512152',
