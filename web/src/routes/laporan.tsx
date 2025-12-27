@@ -22,6 +22,12 @@ export const Route = createFileRoute('/laporan')({
             <a href="#penyaluran" className='text-blue-700 hover:underline cursor-pointer ml-1'>
               • Penyaluran ke Sipange & Hutanabolon
             </a>
+            <a href="#kondisi-sipange" className='text-blue-700 hover:underline cursor-pointer ml-1'>
+              • Kondisi terkini Sipange (25/12/2025)
+            </a>
+            <a href="#kondisi-hutanabolon" className='text-blue-700 hover:underline cursor-pointer ml-1'>
+              • Kondisi terkini Hutanabolon (25/12/2025)
+            </a>
           </div>
           <div id="pembelian" className='mt-8 text-blue-500 text-2xl'>
             Pembelian
@@ -633,6 +639,53 @@ export const Route = createFileRoute('/laporan')({
                 Hutanabolon
               </div>
             </div>
+          </div>
+          <div id="kondisi-sipange" className='mt-8 text-blue-500 text-2xl'>
+            Kondisi terkini Sipange (25/12/2025)
+          </div>
+          <div className='grid grid-cols-1 gap-2 lg:grid-cols-2'>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/sipange1.mp4'} />
+            </video>
+          </div>
+          <div id="kondisi-hutanabolon" className='mt-8 text-blue-500 text-2xl'>
+            Kondisi terkini Hutanabolon (25/12/2025)
+          </div>
+          <div className='grid grid-cols-1 gap-2 lg:grid-cols-2'>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon1.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon2.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon3.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon4.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon5.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon6.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon7.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon8.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon9.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon10.mp4'} />
+            </video>
+            <video controls className='w-full h-90 object-contain bg-black'>
+              <source src={'/laporan/kondisi/hutanabolon11.mp4'} />
+            </video>
+            <img className='w-full h-90 object-contain bg-zinc-100' src={'/laporan/kondisi/hutanabolon12.jpeg'} />
           </div>
         </div>
       </Layout>

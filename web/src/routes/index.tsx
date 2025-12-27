@@ -70,6 +70,16 @@ export const Route = createFileRoute('/')({
             Lihat Laporan Penggunaan Donasi
           </Button>
         </div>
+        <Button 
+          href='/laporan#kondisi-sipange'
+          color='danger'
+          className='whitespace-pre-wrap text-center !h-12 text-lg'
+          as={Link}>
+          Lihat Kondisi Terkini Tapteng (25/12/2025)*
+        </Button>
+        <div className='text-danger-500 text-sm'>
+          *seluruh gambar dan video kondisi terkini diambil pada saat perjalanan penyaluran bantuan ke dua tempat yaitu Sipange dan Hutanabolon tanggal 25 Desember 2025
+        </div>
         <div className='text-zinc-600'>
           Ribuan orang di Sumatra telah kehilangan rumah akibat banjir besar dan tanah longsor yang menghancurkan - banyak yang berduka atas anggota keluarga atau masih mencari mereka yang hilang. Jalan dan jembatan tidak dapat dilalui, listrik dan jaringan seluler terputus. Situasi pasokan semakin kritis dari hari ke hari, dan persediaan makanan semakin menipis.
         </div>
