@@ -1,8 +1,8 @@
 import { Layout } from '@/components/Layout';
 import { IDRFormatter } from '@/utility';
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
+import { Button, Link, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
 import { createFileRoute } from '@tanstack/react-router'
-import { Info } from 'lucide-react';
+import { Download, Info } from 'lucide-react';
 
 export const Route = createFileRoute('/laporan')({
   component() {
@@ -19,7 +19,7 @@ export const Route = createFileRoute('/laporan')({
             <a href="#daftar-barang"className='text-blue-700 hover:underline cursor-pointer ml-1'>
               • Daftar Barang
             </a>
-            <a className='text-blue-700 hover:underline cursor-pointer ml-1'>
+            <a href="#penyaluran" className='text-blue-700 hover:underline cursor-pointer ml-1'>
               • Penyaluran ke Sipange & Hutanabolon
             </a>
           </div>
@@ -86,6 +86,9 @@ export const Route = createFileRoute('/laporan')({
                 </TableRow>
               </TableBody>
             </Table>
+            <Button color="primary" as={Link} target="_blank" href="/laporan/Laporan Donasi Kloter 2.pdf">
+              Download Laporan Pengunaan Dana (PDF) <Download size={18} />
+            </Button>
           </div>
           <div className='flex flex-col gap-3'>
             <div className='font-extrabold text-xl'>
@@ -590,11 +593,46 @@ export const Route = createFileRoute('/laporan')({
               </div>
             </div>
           </div>
-          <div id="daftar-barang" className='mt-8 text-blue-500 text-2xl'>
+          <div id="penyaluran" className='mt-8 text-blue-500 text-2xl'>
             Penyaluran ke Sipange & Hutanabolon
           </div>
-          <div>
-            TBD
+          <div className='grid grid-cols-1 gap-2 lg:grid-cols-2'>
+            <div className='flex flex-col gap-2'>
+              <img className='w-full h-90 object-contain bg-zinc-100' src={'/laporan/penyaluran/imgp1.jpeg'} />
+              <div>
+                Barang tiba di Hutanabolon di posko HKBP Hutanabolon
+              </div>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <img className='w-full h-90 object-contain bg-zinc-100' src={'/laporan/penyaluran/imgp2.jpeg'} />
+              <div>
+                Hutanabolon
+              </div>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <video controls className='w-full h-90 object-contain bg-black'>
+                <source src={'/laporan/penyaluran/vidp1.mp4'} />
+              </video>
+              <div>
+                Barang tiba di salah satu posko di Sipange
+              </div>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <video controls className='w-full h-90 object-contain bg-black'>
+                <source src={'/laporan/penyaluran/vidp2.mp4'} />
+              </video>
+              <div>
+                Sipange
+              </div>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <video controls className='w-full h-90 object-contain bg-black'>
+                <source src={'/laporan/penyaluran/vidp3.mp4'} />
+              </video>
+              <div>
+                Hutanabolon
+              </div>
+            </div>
           </div>
         </div>
       </Layout>
