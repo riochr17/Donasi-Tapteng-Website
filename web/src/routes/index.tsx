@@ -75,7 +75,7 @@ export const Route = createFileRoute('/')({
           color='danger'
           className='whitespace-pre-wrap text-center !h-12 text-lg'
           as={Link}>
-          Lihat Kondisi Terkini Tapteng (25/12/2025)*
+          Lihat Kondisi Terkini Tapteng*
         </Button>
         <div className='text-danger-500 text-sm'>
           *seluruh gambar dan video kondisi terkini diambil pada saat perjalanan penyaluran bantuan ke dua tempat yaitu Sipange dan Hutanabolon tanggal 25 Desember 2025
