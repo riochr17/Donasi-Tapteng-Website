@@ -1,6 +1,6 @@
 outmodel
 node_modules
-dist
+/dist
 .config
 /.env
 db.json
